@@ -7,14 +7,20 @@ namespace NssAlphabits
     {
         public User(string name)
         {
-            UserName = name;
+            NameGivenByAliens = name;
+            FailuresAllowed = 3;
         }
 
+        private string NameGivenByAliens { get; set; }
         public string UserName { get; private set; }
+        private int FailuresAllowed { get; set; }
 
-        public void GiveUserHumanName(string name)
+        public List<char> LetterStorage = new List<char>();
+
+        public string GiveUserHumanName(string name)
         {
             UserName = name;
+            return name;
         }
 
         public string Greeting()
@@ -24,12 +30,12 @@ namespace NssAlphabits
 
         public string Congratulate()
         {
-            return String.Format("Thanks, here is some sludgefood. Tomorrow, we need your numbers.\nCongratulations, {0}!", UserName);
+            return String.Format("Thanks, here is some sludgefood. Tomorrow, we need your numbers.\nCongratulations, {0}!", NameGivenByAliens);
         }
 
-        public void StealNameLetters()
+        public void UnwittinglyProvideNameLetters(string name)
         {
-            foreach (char letter in UserName)
+            foreach (char letter in name)
             {
                 AddChar(letter);
             }
@@ -37,7 +43,7 @@ namespace NssAlphabits
 
         public void AddChar(char letter)
         {
-
+            LetterStorage.Add(letter);
         }
     }
 }
