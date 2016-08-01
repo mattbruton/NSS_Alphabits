@@ -41,6 +41,5 @@ namespace NssAlphabits.Images
 "             )_.-' /       | `-._(\n" +
 "               ).-'         `-.(\n";
         }
-
     }
 }

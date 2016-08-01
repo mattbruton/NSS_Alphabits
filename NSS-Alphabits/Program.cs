@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using NssAlphabits.Images;
 
 namespace NssAlphabits
@@ -13,15 +10,26 @@ namespace NssAlphabits
         {
             return String.Format("> ");
         }
+
         static void Main(string[] args)
         {
+            // Display Alien ASCII Art upon application loading.
             Console.WriteLine(Image.AlienImage());
-            User testSubject = new NssAlphabits.User("XB102108");
+            // Instantiate User, provide Alien Identification for use in dialog.
+            User testSubject = new User("XB102108");
+
+            // Brief intro to explain how this works to the user.
             Console.WriteLine(testSubject.Greeting());
+
+            // Aliens trick the user into giving up characters from their Human name to be added to the list.
             Console.Write(Prompt());
             testSubject.GiveUserHumanName(Console.ReadLine());
-            Console.WriteLine(testSubject.UserName);
+            testSubject.UnwittinglyProvideNameLetters(testSubject.UserName);
+
+
+            Console.WriteLine(testSubject.LetterStorage.Count);
             Console.WriteLine(testSubject.Congratulate());
+            Console.ReadKey();
         }
     }
 }
