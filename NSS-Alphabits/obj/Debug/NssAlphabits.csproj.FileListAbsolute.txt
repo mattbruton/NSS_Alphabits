@@ -3,3 +3,4 @@ Z:\mattbruton On My Mac\workspace\C-Sharp\NSS-Alphabits\NSS-Alphabits\bin\Debug\
 Z:\mattbruton On My Mac\workspace\C-Sharp\NSS-Alphabits\NSS-Alphabits\bin\Debug\NSS-Alphabits.pdb
 Z:\mattbruton On My Mac\workspace\C-Sharp\NSS-Alphabits\NSS-Alphabits\obj\Debug\NSS-Alphabits.exe
 Z:\mattbruton On My Mac\workspace\C-Sharp\NSS-Alphabits\NSS-Alphabits\obj\Debug\NSS-Alphabits.pdb
+Z:\mattbruton On My Mac\workspace\C-Sharp\NSS-Alphabits\NSS-Alphabits\obj\Debug\NssAlphabits.csprojResolveAssemblyReference.cache
