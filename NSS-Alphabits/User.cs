@@ -15,7 +15,7 @@ namespace NssAlphabits
         public string UserName { get; private set; }
         private int FailuresAllowed { get; set; }
 
-        public List<char> LetterStorage = new List<char>();
+        public List<string> LetterStorage = new List<string>();
 
         public string GiveUserHumanName(string name)
         {
@@ -25,7 +25,7 @@ namespace NssAlphabits
 
         public string Greeting()
         {
-            return String.Format("Human, we need your letters!\n\nIf you want to see your family again, write all of them!\n\nRecord your name, letterslave:");
+            return String.Format("{0}, we need your letters!\n\nIf you want to see your family again, write all of them!\n\nRecord your name, letterslave:", NameGivenByAliens);
         }
 
         public string Congratulate()
@@ -43,7 +43,11 @@ namespace NssAlphabits
 
         public void AddChar(char letter)
         {
-            LetterStorage.Add(letter);
+            bool inputIsLetter = char.IsLetter(letter);
+            if (!LetterStorage.Contains(letter.ToString().ToLower()) && inputIsLetter) 
+            {
+                LetterStorage.Add(letter.ToString().ToLower());
+            }
         }
     }
 }
