@@ -31,7 +31,7 @@ namespace NssAlphabits
             {
                 if(testSubject.HasFailed)
                 {
-                    Console.WriteLine("\nYou have died keeping the alphabet safe. Your legacy lived on for two weeks, when the final human's life was extinguished by your captors.");
+                    Console.WriteLine(testSubject.MessageForFailure());
                     break;
                 }
                 testSubject.AlienLetterHandler();
