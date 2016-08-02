@@ -32,6 +32,7 @@ namespace NssAlphabits
                 testSubject.AlienLetterHandler();
             }
 
+            // After all 26 characters have been added, end the appliction.
             Console.WriteLine(testSubject.Congratulate());
             Console.ReadKey();
         }
