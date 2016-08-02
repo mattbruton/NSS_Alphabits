@@ -86,6 +86,10 @@ namespace NssAlphabits
             return string.Format("Do you think this is some kind of game, {0}?! \n -violent probing occurs- \nYOU HAVE {1} MORE CHANCES, FLESHBAG!", NameGivenByAliens, FailuresAllowed);
         }
 
+        public string MessageForFailure()
+        {
+            return "\nYou have died keeping the alphabet safe. Your legacy lived on for two weeks, when the final human's life was extinguished by your captors.";
+        }
         public string Congratulate()
         {
             return string.Format("\nThanks, here is some sludgefood.\nTomorrow, we need your numbers.\nCongratulations, {0}!", NameGivenByAliens);
