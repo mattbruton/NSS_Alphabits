@@ -26,8 +26,12 @@ namespace NssAlphabits
             testSubject.GiveUserHumanName(Console.ReadLine());
             testSubject.UnwittinglyProvideNameLetters(testSubject.UserName);
 
+            // Logic for taking in new letters and outcomes based on what information user provides.
+            while (testSubject.LetterStorage.Count < 26)
+            {
+                testSubject.AlienLetterHandler();
+            }
 
-            Console.WriteLine(testSubject.LetterStorage.Count);
             Console.WriteLine(testSubject.Congratulate());
             Console.ReadKey();
         }
