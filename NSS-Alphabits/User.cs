@@ -8,6 +8,7 @@ namespace NssAlphabits
         public User(string name)
         {
             FailuresAllowed = 3;
+            HasFailed = false;
             NameGivenByAliens = name;
         }
 
@@ -15,7 +16,8 @@ namespace NssAlphabits
         private string NameGivenByAliens { get; set; }
         public string UserName { get; private set; }
         public string UserInput { get; set; }
-
+        public bool HasFailed { get; set; }
+        public bool HasGivenCompleteAlphabet { get; set; }
         public List<string> LetterStorage = new List<string>();
 
         public void AddChar(char letter)
@@ -24,11 +26,15 @@ namespace NssAlphabits
             if (!LetterStorage.Contains(letter.ToString().ToLower()) && inputIsLetter)
             {   
                 LetterStorage.Add(letter.ToString().ToLower());
+                if (LetterStorage.Count == 26)
+                {
+                    HasGivenCompleteAlphabet = true;
+                }
             }
         }
         public string AlienPromptForNewLetter()
         {
-            return string.Format("Give us a new letter, human.");
+            return string.Format("\nGive us a new letter, human.");
         }
 
         public void AlienLetterHandler()
@@ -39,13 +45,29 @@ namespace NssAlphabits
             {
                 foreach (char letter in UserInput)
                 {
-                    AddChar(letter);
-                    Console.WriteLine(MessageAfterValidEntry());
+                    if (!char.IsLetter(letter))
+                    {
+                        FailuresAllowed--;
+                        Console.WriteLine(MessageAfterInvalidEntry());
+                        if (FailuresAllowed == 0)
+                        {
+                            HasFailed = true;
+                        }
+                    }
+                    else
+                    {
+                        AddChar(letter);
+                        Console.WriteLine(MessageAfterValidEntry());
+                    }
                 }
+            }
+            else if (UserInput.Length == 0)
+            {
+                Console.WriteLine("The silent treatment, eh? Do not test our patience, human...");
             }
             else
             {
-                Console.WriteLine("One letter at a time, {0}.", NameGivenByAliens);
+                Console.WriteLine("\nOne letter at a time, {0}.", NameGivenByAliens);
             }
         }
 
@@ -66,7 +88,7 @@ namespace NssAlphabits
 
         public string Congratulate()
         {
-            return string.Format("Thanks, here is some sludgefood. Tomorrow, we need your numbers.\nCongratulations, {0}!", NameGivenByAliens);
+            return string.Format("\nThanks, here is some sludgefood.\nTomorrow, we need your numbers.\nCongratulations, {0}!", NameGivenByAliens);
         }
 
         public string GiveUserHumanName(string name)

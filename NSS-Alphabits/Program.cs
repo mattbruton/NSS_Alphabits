@@ -27,13 +27,22 @@ namespace NssAlphabits
             testSubject.UnwittinglyProvideNameLetters(testSubject.UserName);
 
             // Logic for taking in new letters and outcomes based on what information user provides.
-            while (testSubject.LetterStorage.Count < 26)
+            while(!testSubject.HasGivenCompleteAlphabet)
             {
+                if(testSubject.HasFailed)
+                {
+                    Console.WriteLine("\nYou have died keeping the alphabet safe. Your legacy lived on for two weeks, when the final human's life was extinguished by your captors.");
+                    break;
+                }
                 testSubject.AlienLetterHandler();
             }
 
             // After all 26 characters have been added, end the appliction.
-            Console.WriteLine(testSubject.Congratulate());
+            if (testSubject.HasGivenCompleteAlphabet)
+            {
+                Console.WriteLine(testSubject.Congratulate());
+
+            }
             Console.ReadKey();
         }
     }
