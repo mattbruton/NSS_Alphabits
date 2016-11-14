@@ -35,7 +35,7 @@ Open the solution file in Visual Studio and start the program.
 
 ### Languages
 
-1.C#
+1. C#
 
 ### Tools / Frameworks
 
